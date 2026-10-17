@@ -2,6 +2,6 @@
 // To enable hosted auth/database, paste your project's URL and publishable/anon key below.
 // Never put a service_role key in browser code.
 window.AUTOSETU_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: ""
+  supabaseUrl: "https://svlrjmqdyjfbjvajiiyh.supabase.co",
+  supabaseAnonKey: "sb_publishable_fKEbAzr76sDEMd9S1GRtTg_j9AFdm43"
 };
