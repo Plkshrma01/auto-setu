@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>AutoSetu — Rides made simpler</title>
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/role-auth.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">A</span><span>AutoSetu<small>Rides made simpler</small></span></a>
+  <nav><a class="active" href="index.html">Passenger</a><a href="driver.html">Driver</a><a href="carpool.html">Carpool</a><a href="admin.html">Admin</a></nav>
+  <div class="top-actions"><a class="btn btn-quiet" id="signInBtn" href="login.html">Sign in</a></div>
+</header>
+<main class="page">
+  <section class="hero">
+    <div><span class="eyebrow">LOCAL RIDES · SHARED JOURNEYS</span><h1>Your city.<br><span>Connected.</span></h1><p>Book a local auto or find people travelling your way. Simple, transparent and built for everyday journeys.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#book">Book a ride <span>↗</span></a><a class="btn btn-outline" href="carpool.html">Explore carpools</a></div>
+      <div class="trust-row"><span>✓ Clear ride status</span><span>✓ Share trip details</span><span>✓ Local-first design</span></div>
+    </div>
+    <div class="hero-art"><div class="sun"></div><div class="road"></div><div class="auto-illustration"><div class="auto-roof"></div><div class="auto-body"><span class="auto-window"></span><span class="auto-window"></span><span class="auto-lamp"></span></div><div class="wheel w1"></div><div class="wheel w2"></div></div><div class="art-note"><span class="live-dot"></span> Your next trip starts here</div></div>
+  </section>
+  <section class="stats-grid"><div class="stat"><span class="stat-icon">↗</span><div><strong>Simple booking</strong><small>Request a ride in moments</small></div></div><div class="stat"><span class="stat-icon">◎</span><div><strong>Live trip map</strong><small>See your route and status</small></div></div><div class="stat"><span class="stat-icon">⇄</span><div><strong>Shared journeys</strong><small>Split costs with a carpool</small></div></div></section>
+  <section class="content-grid" id="book">
+    <div class="panel booking-panel">
+      <div class="section-heading"><div><span class="eyebrow">LET'S GET YOU THERE</span><h2>Where to?</h2></div><span class="pill">Passenger</span></div>
+      <form id="rideForm" class="stack">
+        <label>Pickup location<div class="field-with-icon"><span>●</span><input id="pickup" required placeholder="e.g. Bus stand, Ludhiana"></div></label>
+        <label>Destination<div class="field-with-icon"><span>◆</span><input id="destination" required placeholder="e.g. Railway station"></div></label>
+        <div class="form-row"><label>Ride type<select id="rideType"><option value="auto">Auto rickshaw</option><option value="shared">Shared auto</option></select></label><label>Passengers<select id="passengers"><option>1</option><option>2</option><option>3</option></select></label></div>
+        <div class="fare-preview"><div><small>Estimated fare</small><strong id="fareEstimate">₹ 80–120</strong></div><small>Indicative only · confirm with driver</small></div>
+        <button class="btn btn-primary btn-wide" type="submit">Find a ride <span>→</span></button>
+      </form>
+      <div id="rideMessage" class="notice hidden" role="status"></div>
+      <div id="activeRide" class="active-ride hidden"></div>
+    </div>
+    <div class="panel map-panel"><div class="section-heading"><div><span class="eyebrow">YOUR AREA</span><h2>Ride map</h2></div><button class="btn btn-quiet btn-sm" id="locateBtn">◎ Use my location</button></div><div id="map"></div><div id="trackerPanel" class="tracker-panel"><strong>Ride tracker</strong><span id="trackerStatus">Sign in and request a ride to track its status here.</span><div class="tracker-steps"><span>Requested</span><span>Driver arriving</span><span>On trip</span><span>Completed</span></div></div><p class="map-caption">Map tiles © OpenStreetMap contributors. Location permission is optional. Tracking is available only when the backend and driver location sharing are active.</p></div>
+  </section>
+  <section class="bottom-grid"><div class="panel"><div class="section-heading"><div><span class="eyebrow">HOW IT WORKS</span><h2>Three easy steps</h2></div></div><div class="steps"><div><b>01</b><strong>Enter your route</strong><p>Tell us where you are and where you're going.</p></div><div><b>02</b><strong>Connect with a driver</strong><p>Track request status and ride progress.</p></div><div><b>03</b><strong>Arrive and rate</strong><p>Complete your trip and leave feedback.</p></div></div></div>
+  <div class="panel help-panel"><span class="eyebrow">TRAVEL TOGETHER</span><h2>Going the same way?</h2><p>Carpool with people heading in a similar direction and share the travel cost.</p><a class="btn btn-outline" href="carpool.html">Find a carpool →</a></div></section>
+</main>
+<footer><span class="brand-mini">AutoSetu</span><span>Designed for simpler everyday mobility.</span><span><a href="driver.html">Drive with us</a> · <a href="admin.html">Admin</a></span></footer>
+<div id="authModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle"><div class="modal-card"><button class="modal-close" id="closeModal" aria-label="Close">×</button><span class="eyebrow">WELCOME TO AUTOSETU</span><h2 id="authTitle">Sign in or create account</h2><p class="muted">Use email authentication when Supabase is configured. Demo mode keeps activity in this browser only.</p><form id="authForm" class="stack"><label>Email<input type="email" id="authEmail" required placeholder="you@example.com"></label><label>Password<input type="password" id="authPassword" required minlength="6" placeholder="At least 6 characters"></label><div class="form-row"><button class="btn btn-primary" type="submit" value="signin" name="authAction">Sign in</button><button class="btn btn-outline" type="button" id="signUpBtn">Create account</button></div></form><div id="authMessage" class="notice hidden"></div></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script><script src="js/guard.js"></script><script src="js/app.js"></script>
+</body></html>

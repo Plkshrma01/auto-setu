@@ -1,0 +1,6 @@
+/* Optional role auth enhancements */
+.tracker-panel{margin-top:1rem;border:1px solid var(--line,#dfe8e2);border-radius:14px;padding:1rem;background:#f7fbf8;display:grid;gap:.7rem}
+.tracker-panel strong{font-size:1rem}.tracker-panel>span{color:var(--muted,#65766b);font-size:.9rem}
+.tracker-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
+.tracker-steps span{font-size:.72rem;text-align:center;padding:.5rem .25rem;border-radius:8px;background:#e8eee9;color:#607168}
+@media(max-width:560px){.tracker-steps{grid-template-columns:repeat(2,1fr)}}

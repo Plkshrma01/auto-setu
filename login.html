@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10251f"><title>Sign in · AutoSetu</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.auth-page{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#f4f7f3}
+.auth-story{background:linear-gradient(145deg,#10251f,#164d3d);color:#fff;padding:clamp(2rem,6vw,6rem);display:flex;flex-direction:column;justify-content:space-between;min-height:100vh}
+.auth-story h1{font-size:clamp(2.5rem,5vw,4.7rem);line-height:1.02;letter-spacing:-.05em;max-width:600px}
+.auth-story h1 span{color:#a9e6c4}.auth-story p{color:#d1e5da;max-width:480px;line-height:1.7}
+.auth-main{display:grid;place-items:center;padding:2rem}.auth-card{background:#fff;border:1px solid #e2e9e2;border-radius:24px;padding:clamp(1.4rem,4vw,2.5rem);width:min(100%,480px);box-shadow:0 24px 80px #10251f12}
+.auth-card h2{font-size:2rem;letter-spacing:-.04em;margin:.5rem 0}.role-choices{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:.5rem 0 1rem}
+.role-choice{border:1px solid #dce5dd;border-radius:14px;padding:1rem;cursor:pointer;display:block}.role-choice:has(input:checked){border-color:#147d59;background:#effaf3;box-shadow:0 0 0 2px #147d5915}.role-choice input{accent-color:#147d59}.role-choice strong{display:block;margin:.35rem 0}.role-choice small{color:#64756b}
+.auth-tabs{display:flex;background:#f0f4f0;border-radius:12px;padding:4px;margin:1rem 0}.auth-tabs button{flex:1;border:0;border-radius:9px;padding:.7rem;background:transparent;font:inherit;cursor:pointer}.auth-tabs button.active{background:#fff;box-shadow:0 2px 8px #10251f12}
+.auth-card label{display:block;font-weight:600;font-size:.9rem;margin:.8rem 0}.auth-card input[type=email],.auth-card input[type=password],.auth-card input[type=text]{display:block;width:100%;box-sizing:border-box;margin-top:.4rem;padding:.85rem;border:1px solid #dce5dd;border-radius:10px;font:inherit}.auth-note{font-size:.83rem;color:#65766b;line-height:1.55}
+@media(max-width:800px){.auth-page{grid-template-columns:1fr}.auth-story{min-height:auto;padding:2rem}.auth-story h1{font-size:2.6rem}.auth-main{padding:1rem}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="auth-page">
+<section class="auth-story">
+<a class="brand" href="index.html" style="color:white"><span class="brand-mark">A</span><span>AutoSetu<small style="color:#c7ded1">Everyday journeys, connected</small></span></a>
+<div><span class="eyebrow" style="color:#a9e6c4">YOUR CITY. YOUR JOURNEY.</span><h1>Move better,<br><span>together.</span></h1><p>Book a local auto, follow your ride status, or earn with AutoSetu as a driver. One account for the role you choose.</p></div>
+<div class="auth-note" style="color:#c7ded1">🚕 Built for local journeys · Passenger and driver workspaces</div>
+</section>
+<main class="auth-main"><section class="auth-card">
+<a class="brand" href="index.html"><span class="brand-mark">A</span><span>AutoSetu<small>Secure account access</small></span></a>
+<h2 id="formTitle">Welcome back</h2><p class="muted">Choose your workspace, then sign in or create your account.</p>
+<div class="role-choices">
+<label class="role-choice"><input type="radio" name="role" value="passenger" checked><strong>🧍 Passenger</strong><small>Book rides and track trips</small></label>
+<label class="role-choice"><input type="radio" name="role" value="driver"><strong>🛺 Driver</strong><small>Manage requests and trips</small></label>
+</div>
+<div class="auth-tabs"><button type="button" class="active" id="tabLogin">Sign in</button><button type="button" id="tabSignup">Create account</button></div>
+<form id="accountForm">
+<div id="nameWrap" hidden><label>Full name<input id="fullName" type="text" autocomplete="name" placeholder="Your full name"></label></div>
+<label>Email address<input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+<label>Password<input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></label>
+<button class="btn btn-primary btn-wide" id="submitBtn" type="submit">Sign in as passenger →</button>
+</form>
+<div id="authNotice" class="notice hidden" role="status" aria-live="polite"></div>
+<p class="auth-note">Your selected role is checked against your saved account profile. Choosing Driver at login does not convert a passenger account into a driver account. Never share your password.</p>
+<a href="index.html" class="muted small">← Back to AutoSetu home</a>
+</section></main></div>
+<script src="js/config.js"></script><script src="js/auth.js"></script>
+</body></html>
